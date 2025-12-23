@@ -1,0 +1,11 @@
+numpy<2.0.0
+pandas-plink
+scikit-learn
+matplotlib
+seaborn
+ripser
+persim
+scikit-allel
+kmapper
+networkx # Used for haplotype networks
+scipy # Used for quantum-inspired analysis
