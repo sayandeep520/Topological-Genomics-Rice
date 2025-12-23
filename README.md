@@ -181,7 +181,7 @@ Full method detail and parameter choices are documented inline in the notebook.
 
 If you use this work, please cite the repository and the primary analysis notebook. This repository is licensed under the **GPL-3.0** license (see `LICENSE`).
 
-Suggested citation format (adapt as necessary):
+Suggested citation format :
 
 ```
 Sayan Deep Bera. Topological-Genomics-Rice. GitHub repository, https://github.com/sayandeep520/Topological-Genomics-Rice
