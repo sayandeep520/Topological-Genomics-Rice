@@ -1,69 +1,66 @@
-# Topological Genomics of Rice — A topological and population-genetics investigation of the Saltol locus and surrounding haplotype landscape (3K Rice Genomes)
+# Topological Genomics of Rice
 
-**Short project summary (≤350 characters):**
-A reproducible pipeline that applies topological data analysis, population genetics, and machine-learning-guided GWAS to identify and visualize a putative ancestral "bridge" haplotype at the Saltol locus in the 3000 Rice Genomes dataset. Includes notebooks, genotype files, and figures.
+**A topological and population-genetics investigation of the Saltol locus and ancestral bridge haplotypes using the 3000 Rice Genomes Project**
+
+**Short project summary**
+A reproducible computational pipeline combining PCA, linkage disequilibrium, topological data analysis, GWAS, and machine learning to identify ancestral “bridge” haplotypes at the Saltol salinity-tolerance locus in the 3000 Rice Genomes dataset.
+
+---
 
 ## 📌 Abstract
 
-Standard phylogenetic models (like trees) often fail to capture reticulate evolutionary events such as hybridization and introgression. This project models the **3000 Rice Genomes (3K-RG)** dataset as a high-dimensional manifold using **Topological Data Analysis (TDA)**. We successfully identified a persistent **Topological Loop ()** connecting the *Indica* and *Japonica* subspecies. A subsequent Topological GWAS revealed that this loop is driven by the **Saltol QTL** (Salinity Tolerance) on Chromosome 1, proving that ancient hybridization events preserved critical stress-adaptation traits in specific landraces.
+Standard phylogenetic models fail to capture reticulate evolutionary events such as ancient hybridization and introgression. Here, the 3000 Rice Genomes dataset is modeled as a high‑dimensional manifold using **Topological Data Analysis (TDA)**. A persistent topological loop connecting *Indica* and *Japonica* was identified and traced to the **Saltol QTL** on chromosome 1, revealing landraces that act as ancestral reservoirs of salinity tolerance.
+
+---
 
 ## 📖 Introduction
 
-Rice (*Oryza sativa*) evolution is defined by complex domestication histories involving extensive cross-breeding. Traditional Principal Component Analysis (PCA) and hierarchical clustering force these complex relationships into linear or tree-like structures, often discarding hybrid individuals as "noise."
-
-This project tests the hypothesis that **evolution is reticulate (network-like)**. By applying **Persistent Homology**, we detect "geometric loops" in the genomic data that represent evolutionary bridges—varieties that act as reservoirs for genetic diversity lost in modern breeding lines.
-
----
-
-## Table of Contents
-
-1. [Background & Motivation](#background--motivation)
-2. [Repository Contents](#repository-contents)
-3. [Results & Figures](#results--figures)
-4. [Reproducible Analysis (Notebook)](#reproducible-analysis-notebook)
-5. [Data and Formats](#data-and-formats)
-6. [Software & Installation](#software--installation)
-7. [How to run](#how-to-run)
-8. [Methods (summary)](#methods-summary)
-9. [Interpretation & Key Findings](#interpretation--key-findings)
-10. [Citation & License](#citation--license)
-11. [Contact & Contributions](#contact--contributions)
-
----
-
-## Background & Motivation
-
-Rice (Oryza sativa) comprises genetically distinct subpopulations (e.g., Indica, Japonica). The Saltol locus is a major target for salinity-tolerance breeding. Standard tree-based or PCA-only approaches can miss reticulate signals such as ancestral bridge haplotypes or introgression. This repository demonstrates how topological data analysis and LD/GWAS convergence can reveal a small set of bridge varieties that connect otherwise separated haplotype clusters.
+Rice (*Oryza sativa*) domestication involved extensive cross‑breeding between diverged subpopulations. Linear methods such as PCA or tree‑based phylogenies often discard admixed varieties as noise. This project explicitly tests the hypothesis that **rice evolution is network‑like**, using persistent homology and Mapper to detect topological loops corresponding to evolutionary bridges.
 
 ---
 
 ## Repository Contents
 
-Listed files (as present in the repo root):
+**Core analysis**
 
-* `Rice_Topological_Atlas.ipynb` — Primary Jupyter notebook containing the analysis, visualizations, and code used to produce figures.Same file name but with a .py at end contains end to end python code for this project.
-* `core_v0.7.bim`, `core_v0.7.fam` — PLINK-format genotype metadata used in the analysis (trimmed/core dataset).
-* `bridge_samples.csv` — List of bridge/ carrier samples identified in the study.
-* `gene_candidates.csv` — Candidate gene list for the Saltol region (collected from GWAS / annotation overlap).
-* `haplotype_network.png` — Haplotype network / circular visualization of the ancestral bridge.
-* `pca_plot.png` — PCA scatterplot illustrating population structure of the 3K genomes subset used.
-* `ld_triangle_plot.png` — Pairwise LD (r^2) triangle for the focal Saltol SNP block.
-* `rice_topological_network.html` — Interactive topological network visualization (HTML export).
-* `requirements.txt` — Python package list and pinned versions used to reproduce the environment.
-* `README.md` — (this file)
-* `LICENSE` — Project license (GPL-3.0 as present in the repo).
+* `Rice_Topological_Atlas.ipynb` — Full end‑to‑end notebook implementing PCA, TDA, GWAS, LD analysis, AI validation, and visualization.
+* `rice_topological_atlas.py` — Script version of the complete pipeline for batch or HPC execution.
+
+**Genotype metadata (PLINK)**
+
+* `core_v0.7.bim`
+* `core_v0.7.fam`
+
+**Derived results**
+
+* `Rice_Saltol_Bridge_Varieties.csv` — Expanded list of Saltol bridge accessions identified via topology + neighbor recruitment.
+* `Rice_Saltol_Markers.csv` — Top genomic markers (SNPs) defining the Saltol haplotype block.
+* `bridge_samples.csv` — Initial minimal bridge set detected from persistent homology.
+* `gene_candidates.csv` — Candidate genes overlapping GWAS and AI signals.
+
+**Figures**
+
+* `haplotype_network.png` — Corrected genealogy of the Saltol locus.
+* `pca_plot.png` — PCA of ~20,000 SNPs across ~3,000 rice accessions.
+* `ld_triangle_plot.png` — LD (r²) heatmap for the Saltol haplotype block.
+
+**Other**
+
+* `rice_topological_network.html` — Interactive Mapper network.
+* `requirements.txt` — Reproducible Python environment.
+* `README.md`, `LICENSE` (GPL‑3.0)
 
 ---
 
 ## Results & Figures
 
-### Figure 1 | Corrected genealogy of the Saltol locus (ancestral bridge)
+### Figure 1 | Corrected genealogy of the Saltol locus
 
 <p align="center">
   <img src="haplotype_network.png" width="750">
 </p>
 
-*Circular haplotype network highlighting rare bridge varieties (red) that connect otherwise separated common haplotypes (blue). This visualization captures reticulate ancestry not resolved by tree-based models.*
+*Circular haplotype network highlighting rare bridge varieties (red) connecting otherwise separated common haplotypes (blue).*
 
 ---
 
@@ -73,7 +70,7 @@ Listed files (as present in the repo root):
   <img src="pca_plot.png" width="750">
 </p>
 
-*Principal Component Analysis (PC1 vs PC2) computed from ~20,000 SNPs showing strong Indica–Japonica separation and intermediate samples corresponding to Saltol bridge carriers.*
+*PCA (PC1 vs PC2) based on ~20,000 SNPs showing Indica–Japonica separation and intermediate Saltol bridge samples.*
 
 ---
 
@@ -83,38 +80,44 @@ Listed files (as present in the repo root):
   <img src="ld_triangle_plot.png" width="750">
 </p>
 
-*Pairwise linkage disequilibrium (r²) heatmap across candidate SNPs defining the Saltol locus, revealing a compact haplotype block underlying the detected bridge signal.*
+*Pairwise linkage disequilibrium (r²) revealing a compact Saltol haplotype block underlying the topological signal.*
 
 ---
 
-## Reproducible Analysis (Notebook)
+## Reproducible Analysis
 
-The primary workflow is implemented in `Rice_Topological_Atlas.ipynb`. It contains the following sections:
+Run the full analysis using either the notebook or the script:
 
-1. Data loading and basic QC (PLINK/BED parsing)
-2. SNP filtering, MAF and pruning for PCA
-3. PCA computation and plotting (Matplotlib)
-4. Haplotype block extraction around Saltol and LD computation
-5. Haplotype network construction and visualization (networkx / igraph-style layouts)
-6. Topological data analysis / Mapper pipeline (if present) and interactive network export
-7. Integration with GWAS or AI-based candidate prioritization (summary and overlap tables)
+```bash
+jupyter notebook Rice_Topological_Atlas.ipynb
+# or
+python rice_topological_atlas.py
+```
 
-Open the notebook in JupyterLab or NBViewer to inspect the code and re-run cells. Large genotype files are expected to be pre-downloaded in PLINK format.
+The pipeline includes:
+
+1. PCA‑based population structure
+2. Persistent homology (H0, H1 loops)
+3. Mapper network construction
+4. Topological GWAS (Hudson’s Fst)
+5. AI validation (Random Forest feature importance)
+6. LD convergence and haplotype network reconstruction
 
 ---
 
-## Data and Formats
+## Data Source
 
-* Genotype metadata: PLINK `.bim` / `.fam` files (SNP coordinates and sample labels included).
-* `bridge_samples.csv` and `gene_candidates.csv` are CSV tables with sample IDs and annotation fields respectively.
-* The analysis expects either a PLINK binary (`.bed/.bim/.fam`) trio or pre-extracted VCF-derived genotype matrices.
+Genotype data were derived from the **IRRI SNP‑Seek database**:
 
-> **Data privacy note:** This repository contains derived files used for method demonstration. If you add raw genotype/VCF files, ensure they do not violate data sharing agreements for the 3K Rice Genomes.
+* 404K CoreSNP dataset
+* Reference: Nipponbare MSU7 / IRGSP‑1.0
+* Formats: PLINK `.bed/.bim/.fam`
+
+Download: [https://snp-seek.irri.org](https://snp-seek.irri.org)
+
 ---
 
 ## Software & Installation
-
-A `requirements.txt` is included. Suggested installation steps (Linux/macOS):
 
 ```bash
 python3 -m venv .venv
@@ -122,76 +125,31 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Typical packages used in the notebook include:
-
-* numpy, pandas, scikit-learn
-* matplotlib, seaborn
-* networkx or igraph
-* plinkio or pyplink (if reading PLINK files directly)
-* scikit-tda / kepler-mapper (optional, for mapping/tda)
-
-If you use conda, create an environment with the same package versions for reproducibility.
-
----
-
-## How to run
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/sayandeep520/Topological-Genomics-Rice.git
-cd Topological-Genomics-Rice
-```
-
-2. Install dependencies (see above) and start Jupyter:
-
-```bash
-jupyter lab
-# or
-jupyter notebook
-```
-
-3. Open `Rice_Topological_Atlas.ipynb` and run cells sequentially. If large genotype files are not present, adjust the data paths at the top of the notebook to point to your local PLINK/VCF files.
-
-4. Export figures by re-running the plotting cells; use `plt.savefig('myfig.png', dpi=300)` for publication quality.
-
----
-
-## Methods (brief)
-
-* **PCA:** Standardized genotype matrix → PCA (scikit-learn) to visualize structure and annotate subpopulations.
-* **LD:** Pairwise r² computed across focal SNPs to identify compact haplotype blocks.
-* **Haplotype network:** Haplotype clustering (distance-based) and circular layout to visualize bridge carriers linking clusters.
-* **Topological analysis:** Mapper / TDA used to detect non-tree-like relationships and candidate bridge haplotypes not obvious from trees or PCA alone.
-* **GWAS/AI convergence:** Overlap of significant GWAS hits and ML/AI-prioritized SNPs to recall candidate genes.
-
-Full method detail and parameter choices are documented inline in the notebook.
+Key dependencies: `numpy`, `pandas`, `scikit‑learn`, `pandas‑plink`, `ripser`, `kmapper`, `scikit‑allel`, `matplotlib`, `seaborn`.
 
 ---
 
 ## Interpretation & Key Findings
 
-* The combination of TDA and classical LD/GWAS analysis pinpoints a localized haplotype block near Saltol with elevated LD and a small set of varieties acting as a likely ancestral bridge.
-* These "bridge" varieties can explain reticulate patterns and provide targets for breeders interested in introgressing salinity tolerance.
-* Results are hypothesis-generating and should be validated via targeted sequencing and experimental phenotyping.
+* A persistent topological loop reveals ancient hybridization between Indica and Japonica.
+* Saltol is identified as the genomic driver of this loop.
+* Bridge landraces preserve stress‑tolerance alleles lost in modern elite lines.
+* AI and LD analyses independently validate the same haplotype block.
 
 ---
 
 ## Citation & License
 
-If you use this work, please cite the repository and the primary analysis notebook. This repository is licensed under the **GPL-3.0** license (see `LICENSE`).
-
-Suggested citation format :
+GPL‑3.0 License. If you use this work, please cite:
 
 ```
-Sayan Deep Bera. Topological-Genomics-Rice. GitHub repository, https://github.com/sayandeep520/Topological-Genomics-Rice
+Sayan Deep Bera. Topological Genomics of Rice. GitHub repository:
+https://github.com/sayandeep520/Topological-Genomics-Rice
 ```
 
 ---
 
 ## Contact & Contributions
 
-* Maintainer: sayandeep520 (GitHub)
-* Issues and pull requests are welcome. For major changes, please open an issue first to propose the change.
-
-https://snp-seek.irri.org/index.zul download data from this website - 404K CoreSNP dataset, called vs Nipponbare MSU7/IRGSP1.0 genome, PLINK bed file;404K CoreSNP dataset, called vs Nipponbare MSU7/IRGSP1.0 genome, PLINK bim file;404K CoreSNP dataset, called vs Nipponbare MSU7/IRGSP1.0 genome, PLINK fam file
+Maintainer: **Sayan Deep Bera**
+Issues and pull requests are welcome. For major extensions, please open an issue first.
