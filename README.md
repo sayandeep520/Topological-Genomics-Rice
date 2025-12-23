@@ -41,7 +41,7 @@ Rice (Oryza sativa) comprises genetically distinct subpopulations (e.g., Indica,
 
 Listed files (as present in the repo root):
 
-* `Rice_Topological_Atlas.ipynb` — Primary Jupyter notebook containing the analysis, visualizations, and code used to produce figures.
+* `Rice_Topological_Atlas.ipynb` — Primary Jupyter notebook containing the analysis, visualizations, and code used to produce figures.Same file name but with a .py at end contains end to end python code for this project.
 * `core_v0.7.bim`, `core_v0.7.fam` — PLINK-format genotype metadata used in the analysis (trimmed/core dataset).
 * `bridge_samples.csv` — List of bridge/ carrier samples identified in the study.
 * `gene_candidates.csv` — Candidate gene list for the Saltol region (collected from GWAS / annotation overlap).
@@ -194,3 +194,4 @@ Sayan Deep Bera. Topological-Genomics-Rice. GitHub repository, https://github.co
 * Maintainer: sayandeep520 (GitHub)
 * Issues and pull requests are welcome. For major changes, please open an issue first to propose the change.
 
+https://snp-seek.irri.org/index.zul download data from this website - 404K CoreSNP dataset, called vs Nipponbare MSU7/IRGSP1.0 genome, PLINK bed file;404K CoreSNP dataset, called vs Nipponbare MSU7/IRGSP1.0 genome, PLINK bim file;404K CoreSNP dataset, called vs Nipponbare MSU7/IRGSP1.0 genome, PLINK fam file
